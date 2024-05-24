@@ -1,12 +1,11 @@
 // Name: Typed Metadata Parser
-// Description: Reads metadata from the exported `metadata` constant and updates the comment-based values
 
 import "@johnlindquist/kit"
 import { getAllScriptPaths } from "@josxa/kit-utils"
 import { Parser, type Program } from "acorn"
 import tsPlugin from "acorn-typescript"
 import BPromise from "bluebird"
-import type { Metadata } from "../index"
+import type { Metadata } from "../../../../.kit"
 
 export const metadata: Metadata = {
   name: "Typed Metadata Parser",

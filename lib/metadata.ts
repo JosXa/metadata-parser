@@ -1,4 +1,6 @@
-export interface Metadata {
+import type { CronExpression } from "./cron"
+
+export type Metadata = {
   /**
    * Specifies the name of the script as it appears in the Script Kit interface.
    */
@@ -49,13 +51,19 @@ export interface Metadata {
    */
   background?: boolean
 
-  /**
-   * Associates the script with system events such as sleep, wake, or shutdown.
-   */
-  system?: string
+  system?:
+    | "suspend"
+    | "resume"
+    | "on-ac"
+    | "on-battery"
+    | "shutdown"
+    | "lock-screen"
+    | "unlock-screen"
+    | "user-did-become-active"
+    | "user-did-resign-active"
 
   /**
    * Specifies a cron expression for scheduling the script to run at specific times or intervals.
    */
-  schedule?: string
+  schedule?: CronExpression
 }
