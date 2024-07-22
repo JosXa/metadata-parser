@@ -7,7 +7,7 @@ import tsPlugin from "acorn-typescript"
 import BPromise from "bluebird"
 import type { Metadata } from "../../../../.kit"
 
-export const metadata: Metadata = {
+metadata = {
   name: "Typed Metadata Parser",
   description: "Reads metadata from the exported `metadata` constant and updates the comment-based values",
 }
