@@ -1,4 +1,4 @@
-import type { CronExpression } from "./cron"
+import type { CronExpression } from "./cron.ts"
 
 export type Metadata = {
   /**

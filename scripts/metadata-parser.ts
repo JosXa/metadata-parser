@@ -5,7 +5,7 @@ import { getAllScriptPaths } from "@josxa/kit-utils"
 import { Parser, type Program } from "acorn"
 import tsPlugin from "acorn-typescript"
 import BPromise from "bluebird"
-import type { Metadata } from "../../../../.kit"
+import type { Metadata } from "../../../../.kit.ts"
 
 metadata = {
   name: "Typed Metadata Parser",
@@ -60,18 +60,18 @@ async function extractMetadata(ast: Program) {
 
     return properties.reduce((acc, prop) => {
       if (!isOfType(prop, "Property")) {
-        throw Error("Not a Property")
+        throw new Error("Not a Property")
       }
 
       const key = prop.key
       const value = prop.value
 
       if (!isOfType(key, "Identifier")) {
-        throw Error("Key is not an Identifier")
+        throw new Error("Key is not an Identifier")
       }
 
       if (!isOfType(value, "Literal")) {
-        throw Error(`value is not a Literal, but a ${value.type}`)
+        throw new Error(`value is not a Literal, but a ${value.type}`)
       }
 
       acc[key.name] = value.value
@@ -100,7 +100,6 @@ async function tryExtractMetadata(filePath: string): Promise<object | string> {
   try {
     return await extractMetadata(ast)
   } catch (err) {
-    console.error(`Unable to extract metadata for file '${path.basename(filePath)}': ${err}`)
     return `/* Unable to extract metadata: ${(err as Error).message.replaceAll("*/", "")} */`
   }
 }

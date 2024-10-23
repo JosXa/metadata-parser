@@ -1,1 +1,1 @@
-export type { Metadata } from "./lib/metadata"
+export type { Metadata } from "./lib/metadata.ts"
